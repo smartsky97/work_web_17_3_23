@@ -8,7 +8,6 @@
 		<script src="./js/util.js"></script>
 	</head>
 	<body>
-		<!--班级圈-->
         <div class="work-content">
         	<div class="work_head">
                 <img src="img/work_head.png" alt="" class="work_bg"> 
@@ -20,19 +19,19 @@
                 	<div class="work_main_btn_inner">
                 		<ul>
                 			<li class="work_li_one">
-                				<a class="threepic">
+                				<a class="threepic work_publish">
                 					<img src="img/t_publishwork.png"/>
                 				</a><br/>
                 				<p class="float_p">发布作业</p>
                 			</li>
                 			<li>
-                				<a class="threepic">
+                				<a class="threepic work_check">
                 					<img src="img/t_checkwork.png"/>
                 				</a><br/>
                 				<p>检查作业</p>
                 			</li>
                 			<li>
-                				<a class="threepic">
+                				<a class="threepic work_record">
                 					<img src="img/t_workrecord.png"/>
                 				</a><br/>
                 				<p>作业记录</p>
@@ -75,23 +74,15 @@
 	<script src="./js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
 	$(function(){
-		$('#class-01 dd.a03 a').click(function(){
-			/*alert("shjh");*/
-			$(this).next(".class_xinxi_tc").toggleClass("show");
+		$('.work_publish').click(function(){
+			$(".work_progress_infact02").css("width","33%");
 		});
-		//展开收缩文字
-		$("#class-01 dd p").each(function(){
-            var maxwidth=80;//设置最多显示的字数
-            var text=$(this).text();
-            if($(this).text().length>maxwidth){
-                $(this).text($(this).text().substring(0,maxwidth));
-                $(this).html($(this).html()+"..."+"<a href='###' class='class_more'> 全文</a>");//如果字数超过最大字数，超出部分用...代替，并且在后面加上点击展开的链接；
-
-            };
-            $(this).find("a").click(function(){
-                $(this).parent().text(text);//点击“点击展开”，展开全文
-            })
-        })
-	})
+		$('.work_check').click(function(){
+			$(".work_progress_infact02").css("width","66%");
+		});
+		$('.work_record').click(function(){
+			$(".work_progress_infact02").css("width","100%");
+		});
+	});
     </script>
 </html>
