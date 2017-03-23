@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<script src="js/util.js"></script>
+	</head>
+	<body>
+		<footer class="footer bgcfef">
+			<ul class="f-menu">
+				<li class="f-menu-li">
+					<img src="img/xuexi.png" alt="学习"/>
+					<p class="col999">学习</p>
+				</li>
+				<li class="f-menu-li">
+					<img src="img/banji.png" alt="班级" />
+					<p class="col999">班级圈</p>
+				</li>
+				<li class="f-menu-li">
+					<img src="img/tongxunlu.png" alt="通讯录" />
+					<p class="col999">通讯录</p>
+				</li>
+				<li class="f-menu-li">
+					<img src="img/wo.png" alt="个人" />
+					<p class="col999">我</p>
+				</li>
+			</ul>
+		</footer>
+	</body>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(".f-menu-li").on("click",function(){
+			var len=$(this).siblings(".f-menu-li").find("img").length;
+			var m=$(this).siblings(".f-menu-li").find("img");
+			$.each($(m), function(i) {
+				console.log($(m[i]).attr("src"));
+				if($(m[i]).attr("src").indexOf("l-")>-1){
+					$(m[i]).attr("src",$(m[i]).attr("src").replace("l-",""));
+				}
+			});
+			var img=$(this).find("img").attr("src");
+			
+			if($(this).find("img").attr("src").indexOf("l-")>-1){
+				var img=$(this).find("img").attr("src");
+			}else{
+				console.log("1");
+				var img=$(this).find("img").attr("src");
+				$(this).find("img").attr("src",img.replace("img/","img/l-"));
+				console.log("--");
+			}
+			
+		});
+		/*$(".f-menu-li").click(function(){
+			var a=$(this).find("img").attr("src");
+			if(a.indexOf("l-")> 0){
+				$(this).find("img").attr("src",a.replace("img/","img/l-"));
+				}else{
+					
+					}
+			})*/
+	</script>
+</html>
