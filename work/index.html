@@ -10,7 +10,15 @@
 	<body>
         <div class="work-content">
         	<div class="work_head">
-                <img src="img/work_head.png" alt="" class="work_bg"> 
+        		<div class="work_main_img">
+        			<button style="display: none;" id="n1"></button>
+        			<button style="display: none;" id="n2"></button>
+        			<ul>
+        				<li><span class="img_1"></span></li>
+        				<li><span class="img_2"></span></li>
+						<li><span class="img_3"></span></li>
+        			</ul>
+        		</div>
                 <div class="work_progress">
                 	<div class="work_progress_infact01"></div>
                 	<div class="work_progress_infact02"></div>
@@ -72,16 +80,36 @@
 		<iframe src="footer.html" class="footer-iframe"></iframe>
 	</body>
 	<script src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.event.drag-1.5.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.touchSlider.js" ></script>
     <script type="text/javascript">
-	$(function(){
-		$('.work_publish').click(function(){
-			$(".work_progress_infact02").css("width","33%");
+    $(document).ready(function(){
+    	$(".work_main_img").touchSlider({
+			flexible : true,
+			speed : 200,
+			btn_prev : $("#n1"),
+			btn_next : $("#n2"),
+			counter : function (e){
+				if(e.current == 1){
+					$(".work_progress_infact02").css("width","33%");
+				}else if(e.current == 2){
+					$(".work_progress_infact02").css("width","66%");
+				}else{
+					$(".work_progress_infact02").css("width","100%");
+				}
+			}
 		});
-		$('.work_check').click(function(){
-			$(".work_progress_infact02").css("width","66%");
-		});
-		$('.work_record').click(function(){
-			$(".work_progress_infact02").css("width","100%");
+		
+		timer = setInterval(function(){
+			$("#n2").click();
+		}, 5000);
+		
+		$(".work_main_img").bind("touchstart",function(){
+			clearInterval(timer);
+		}).bind("touchend", function(){
+			timer = setInterval(function(){
+				$("#n2").click();
+			}, 5000);
 		});
 	});
     </script>
